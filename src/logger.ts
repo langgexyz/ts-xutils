@@ -6,7 +6,7 @@ export interface Logger {
   Error(tag: string, msg: string): void
 }
 
-export class Console implements Logger {
+export class ConsoleLogger implements Logger {
   Debug(tag: any, msg: any): void {
     console.debug(`${new Date().toLocaleTimeString()} Debug: ${tag}  --->  ${msg}`)
   }
