@@ -1,26 +1,50 @@
 
+export interface LogWriter {
+	debug(msg: string): void
+	info(msg: string): void
+	warn(msg: string): void
+	error(msg: string): void
+}
+
+export interface LogFormatter {
+	Debug(tag: string, msg: string): string
+	Info(tag: string, msg: string): string
+	Warn(tag: string, msg: string): string
+	Error(tag: string, msg: string): string
+}
+
 export interface Logger {
-  Debug(tag: string, msg: string): void
-  Info(tag: string, msg: string): void
-  Warning(tag: string, msg: string): void
-  Error(tag: string, msg: string): void
+	w: LogWriter
+	f: LogFormatter
 }
 
-export class ConsoleLogger implements Logger {
-  Debug(tag: any, msg: any): void {
-    console.debug(`${new Date().toISOString()} Debug: ${tag}  --->  ${msg}`)
+export class TimeFormatter implements LogFormatter {
+  Debug(tag: any, msg: any): string {
+    return `${new Date().toISOString()} Debug: ${tag}  --->  ${msg}`
   }
 
-  Error(tag: any, msg: any): void {
-    console.error(`${new Date().toISOString()} Error: ${tag}  --->  ${msg}`)
+  Error(tag: any, msg: any): string {
+		return `${new Date().toISOString()} Error: ${tag}  --->  ${msg}`
   }
 
-  Info(tag: any, msg: any): void {
-    console.info(`${new Date().toISOString()} Info: ${tag}  --->  ${msg}`)
+  Info(tag: any, msg: any): string {
+		return `${new Date().toISOString()} Info: ${tag}  --->  ${msg}`
   }
 
-  Warning(tag: any, msg: any): void {
-    console.warn(`${new Date().toISOString()} Warning: ${tag}  --->  ${msg}`)
+  Warn(tag: any, msg: any): string {
+		return `${new Date().toISOString()} Warn: ${tag}  --->  ${msg}`
   }
-
 }
+
+export const ConsoleLogger: Logger = {
+	w: console,
+	f: new TimeFormatter()
+}
+
+/**
+ * 暂没有找到 console.debug/info/warn/error 类似 skip stack 的功能，无法对 console 方法做二次
+ * 封装，否则 console 输出的文件名与行号都是二次封装文件的文件名与行号，不方便查看日志信息
+ *  todo: 是否有其他可靠的方式做如下的替换?
+ * Logger.Debug(tag, msg) => Logger.w.debug(Logger.f.Debug(tag, msg))
+ *
+ */
