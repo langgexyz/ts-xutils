@@ -1,5 +1,5 @@
 
-export {type Duration, Hour, Second, Minute, Microsecond, Millisecond} from "./src/duration"
+export {type Duration, Hour, Second, Minute, Microsecond, Millisecond, formatDuration} from "./src/duration"
 
 export {Utf8} from "./src/utf8"
 
