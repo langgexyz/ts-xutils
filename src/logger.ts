@@ -41,6 +41,21 @@ export const ConsoleLogger: Logger = {
 	f: new TimeFormatter()
 }
 
+export const NoLog: Logger = {
+	w: {
+		debug: ()=>{},
+		info: ()=>{},
+		warn: ()=>{},
+		error: ()=>{}
+	},
+	f: {
+		Debug: ()=>"",
+		Error: ()=>"",
+		Info: ()=>"",
+		Warn: ()=>""
+	}
+}
+
 /**
  * 暂没有找到 console.debug/info/warn/error 类似 skip stack 的功能，无法对 console 方法做二次
  * 封装，否则 console 输出的文件名与行号都是二次封装文件的文件名与行号，不方便查看日志信息
