@@ -6,9 +6,11 @@
 
     "isolatedModules": true,
 
-    "outDir": "dist",
+    "outDir": "./dist/esm",
     "sourceMap": true,
     "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
 
     "lib": ["es2015", "es2017", "es2016", "dom"],
     "experimentalDecorators": true,
@@ -26,7 +28,6 @@
   },
   "include": [
     "src",
-    "test",
     "index.ts"
   ],
   "exclude": ["node_modules/**/*"]
