@@ -93,8 +93,7 @@ typings/
 # Serverless directories
 .serverless/
 
-# Distribution directory
-dist
+# Distribution directory - 已移除，npm 包需要编译后的文件
 
 # FuseBox cache
 .fusebox/

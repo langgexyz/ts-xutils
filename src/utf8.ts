@@ -158,7 +158,7 @@ export class Utf8 {
 
   public codeUnitAt(index: number):ArrayBuffer {
     const sliced = this.raw.slice(this.indexes[index], this.indexes[index+1]);
-    return sliced.buffer.slice(sliced.byteOffset, sliced.byteOffset + sliced.byteLength);
+    return sliced.buffer.slice(sliced.byteOffset, sliced.byteOffset + sliced.byteLength) as ArrayBuffer;
   }
 
 }

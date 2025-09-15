@@ -1,0 +1,1 @@
+{"version":3,"file":"duration.d.ts","sourceRoot":"","sources":["../../src/duration.ts"],"names":[],"mappings":"AAEA,MAAM,MAAM,QAAQ,GAAG,MAAM,CAAA;AAE7B,eAAO,MAAM,WAAW,IAAI,CAAA;AAC5B,eAAO,MAAM,WAAW,QAAqB,CAAA;AAC7C,eAAO,MAAM,MAAM,QAAqB,CAAA;AACxC,eAAO,MAAM,MAAM,QAAc,CAAA;AACjC,eAAO,MAAM,IAAI,QAAc,CAAA;AAE/B,wBAAgB,cAAc,CAAC,CAAC,EAAE,QAAQ,GAAG,MAAM,CAkClD"}
