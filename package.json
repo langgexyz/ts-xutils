@@ -1,6 +1,6 @@
 {
   "name": "ts-xutils",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "typescript: Duration and so on",
   "author": "xpwu",
   "main": "dist/cjs/index.js",
