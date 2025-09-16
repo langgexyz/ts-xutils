@@ -21,7 +21,7 @@ export class TimeFormatter {
         return `${new Date().toISOString()} Warn: ${tag}  --->  ${msg}`;
     }
 }
-const wrapConsole = (defaultLevel = LogLevel.DEBUG) => {
+const wrapConsole = (defaultLevel = LogLevel.WARN) => {
     const wrapper = {
         level: defaultLevel,
         debug(msg) {

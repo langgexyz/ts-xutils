@@ -47,7 +47,7 @@ export class TimeFormatter implements LogFormatter {
   }
 }
 
-const wrapConsole = (defaultLevel: LogLevel = LogLevel.DEBUG): LogWriter => {
+const wrapConsole = (defaultLevel: LogLevel = LogLevel.WARN): LogWriter => {
 	const wrapper = {
 		level: defaultLevel,
 		debug(msg: string): void {

@@ -25,7 +25,7 @@ class TimeFormatter {
     }
 }
 exports.TimeFormatter = TimeFormatter;
-const wrapConsole = (defaultLevel = LogLevel.DEBUG) => {
+const wrapConsole = (defaultLevel = LogLevel.WARN) => {
     const wrapper = {
         level: defaultLevel,
         debug(msg) {
