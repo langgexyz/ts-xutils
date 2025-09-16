@@ -1,3 +1,12 @@
+// 日志级别枚举
+export var LogLevel;
+(function (LogLevel) {
+    LogLevel[LogLevel["DEBUG"] = 0] = "DEBUG";
+    LogLevel[LogLevel["INFO"] = 1] = "INFO";
+    LogLevel[LogLevel["WARN"] = 2] = "WARN";
+    LogLevel[LogLevel["ERROR"] = 3] = "ERROR";
+    LogLevel[LogLevel["NONE"] = 4] = "NONE";
+})(LogLevel || (LogLevel = {}));
 export class TimeFormatter {
     Debug(tag, msg) {
         return `${new Date().toISOString()} Debug: ${tag}  --->  ${msg}`;
@@ -12,8 +21,37 @@ export class TimeFormatter {
         return `${new Date().toISOString()} Warn: ${tag}  --->  ${msg}`;
     }
 }
+const wrapConsole = (defaultLevel = LogLevel.DEBUG) => {
+    const wrapper = {
+        level: defaultLevel,
+        debug(msg) {
+            if (LogLevel.DEBUG >= wrapper.level) {
+                console.debug(msg);
+            }
+        },
+        info(msg) {
+            if (LogLevel.INFO >= wrapper.level) {
+                console.info(msg);
+            }
+        },
+        warn(msg) {
+            if (LogLevel.WARN >= wrapper.level) {
+                console.warn(msg);
+            }
+        },
+        error(msg) {
+            if (LogLevel.ERROR >= wrapper.level) {
+                console.error(msg);
+            }
+        },
+        setLevel(level) {
+            wrapper.level = level;
+        }
+    };
+    return wrapper;
+};
 export const ConsoleLogger = {
-    w: console,
+    w: wrapConsole(LogLevel.DEBUG),
     f: new TimeFormatter()
 };
 export const NoLog = {
@@ -31,10 +69,15 @@ export const NoLog = {
     }
 };
 /**
- * 暂没有找到 console.debug/info/warn/error 类似 skip stack 的功能，无法对 console 方法做二次
- * 封装，否则 console 输出的文件名与行号都是二次封装文件的文件名与行号，不方便查看日志信息
- *  todo: 是否有其他可靠的方式做如下的替换?
- * Logger.Debug(tag, msg) => Logger.w.debug(Logger.f.Debug(tag, msg))
+ * 已实现两个功能：
+ * 1. 保持原有调用方式：ConsoleLogger.w.debug(ConsoleLogger.f.Debug(tag, msg))
+ * 2. 级别控制：ConsoleLogger.w.setLevel(LogLevel.INFO) - 超过设定级别才打印
  *
+ * 使用示例：
+ * ConsoleLogger.w.setLevel(LogLevel.INFO)  // 设置级别
+ *
+ * // 原有调用方式，现在支持级别控制：
+ * ConsoleLogger.w.debug(ConsoleLogger.f.Debug("Tag", "message"))  // 不会输出（级别低于INFO）
+ * ConsoleLogger.w.info(ConsoleLogger.f.Info("Tag", "message"))    // 会输出
  */
 //# sourceMappingURL=logger.js.map
