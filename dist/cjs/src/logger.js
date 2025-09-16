@@ -55,7 +55,7 @@ const wrapConsole = (defaultLevel = LogLevel.WARN) => {
     return wrapper;
 };
 exports.ConsoleLogger = {
-    w: wrapConsole(LogLevel.DEBUG),
+    w: wrapConsole(LogLevel.WARN),
     f: new TimeFormatter()
 };
 exports.NoLog = {

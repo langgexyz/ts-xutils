@@ -78,7 +78,7 @@ const wrapConsole = (defaultLevel: LogLevel = LogLevel.WARN): LogWriter => {
 }
 
 export const ConsoleLogger: Logger = {
-	w: wrapConsole(LogLevel.DEBUG),
+	w: wrapConsole(LogLevel.WARN),
 	f: new TimeFormatter()
 }
 

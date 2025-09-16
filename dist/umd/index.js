@@ -9,7 +9,7 @@
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Delay = exports.UniqFlag = exports.RandomInt = exports.assert = exports.AssertError = exports.NoLog = exports.ConsoleLogger = exports.Utf8 = exports.formatDuration = exports.Millisecond = exports.Microsecond = exports.Minute = exports.Second = exports.Hour = void 0;
+    exports.Delay = exports.UniqFlag = exports.RandomInt = exports.assert = exports.AssertError = exports.NoLog = exports.ConsoleLogger = exports.LogLevel = exports.Utf8 = exports.formatDuration = exports.Millisecond = exports.Microsecond = exports.Minute = exports.Second = exports.Hour = void 0;
     var duration_1 = require("./src/duration");
     Object.defineProperty(exports, "Hour", { enumerable: true, get: function () { return duration_1.Hour; } });
     Object.defineProperty(exports, "Second", { enumerable: true, get: function () { return duration_1.Second; } });
@@ -20,6 +20,7 @@
     var utf8_1 = require("./src/utf8");
     Object.defineProperty(exports, "Utf8", { enumerable: true, get: function () { return utf8_1.Utf8; } });
     var logger_1 = require("./src/logger");
+    Object.defineProperty(exports, "LogLevel", { enumerable: true, get: function () { return logger_1.LogLevel; } });
     Object.defineProperty(exports, "ConsoleLogger", { enumerable: true, get: function () { return logger_1.ConsoleLogger; } });
     Object.defineProperty(exports, "NoLog", { enumerable: true, get: function () { return logger_1.NoLog; } });
     var assert_1 = require("./src/assert");
