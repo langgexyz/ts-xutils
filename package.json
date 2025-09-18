@@ -12,7 +12,7 @@
     }
   },
   "name": "ts-xutils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "typescript: Duration and so on",
   "author": "xpwu",
   "main": "dist/cjs/index.js",
